@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="home.component.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <img src="assets/home.png" alt="" class="image-home">
+        <button *ngIf="!register && !login" class="btn btn-primary signup-button" (click)="register=!register">Register
+            for free <span></span><span></span><span></span><span></span> </button>
+        <button *ngIf="!register && !login" class="btn btn-primary signin-button" (click)="register=!register">Sign
+            in</button>
+
+    </div>
+    <!-- Register form -->
+    <div *ngIf="register">
+        <form class="form" [formGroup]="registerForm">
+            <div class="formControl">
+                <label for="name">Name :</label>
+                <input type="text" formControlName="name">
+            </div>
+            <div class="formControl">
+                <label for="username">Username :</label>
+                <input type="text" formControlName="username">
+            </div>
+            <div class="formControl">
+                <label for="password">Password :</label>
+                <input type="password" formControlName="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="reset" class="btn btn-danger" (click)="register=!register">Cancel</button>
+            Value : {{registerForm.value | json}}
+
+        </form>
+    </div>
+</body>
+
+</html>
