@@ -1,0 +1,164 @@
+body{
+  margin: 0%;
+}
+.container-fluid {
+  position: relative;
+  width: 100%;
+}
+
+@media screen and (min-width: 350px){      /*larger screens*/
+
+  .image-home{
+      width: 100%;
+      background-size: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+  .signup-button{
+    position: absolute;
+    top: 75%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #222629;
+    border: 2px solid #61892F;
+    border-color: #61892F;
+    color: #61892F;
+    font-weight: bolder;
+    font-size: 7px; 
+    padding: 2px 6px;
+    cursor: pointer;
+    border-radius: 10px;
+    word-wrap: break-word;
+    transition: all .2s ease-in-out;
+  }
+  .signin-button{
+    position: absolute;
+    top: 92%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #222629;
+    border: 2px solid #61892F;
+    border-color: #61892F;
+    color: #61892F;
+    font-weight: bolder;
+    font-size: 7px; 
+    padding: 2px 6px;
+    cursor: pointer;
+    border-radius: 10px;
+    word-wrap: break-word;
+    transition: all .2s ease-in-out;
+  }
+  
+}
+
+@media screen and (min-width: 450px){
+  .signin-button{
+    font-size: 8px;
+    border-radius: 25px;
+    padding: 2px 14px;
+
+  }
+  .signup-button{
+    font-size: 8px;
+    border-radius: 25px;
+    padding: 2px 14px;
+  }
+}
+
+@media screen and (min-width: 600px){
+  .signin-button{
+    font-size: 12px;
+    border-radius: 25px;
+    padding: 3px 14px;
+
+  }
+  .signup-button{
+    font-size: 12px;
+    border-radius: 25px;
+    padding: 3px 14px;
+  }
+}
+
+@media screen and (min-width: 800px){      /*larger screens*/
+
+  .image-home{
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      background-size: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+  .signup-button{
+    position: absolute;
+    top: 75%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #222629;
+    border: 2px solid #61892F;
+    border-color: #61892F;
+    color: #61892F;
+    font-weight: bolder;
+    font-size: 80%; 
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    word-wrap: break-word;
+    transition: all .2s ease-in-out;
+  }
+  .signin-button{
+    top: 92%;
+    left: 80%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #222629;
+    border: 2px solid #61892F;
+    border-color: #61892F;
+    color: #61892F;
+    font-weight: bolder;
+    font-size: 80%; 
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    word-wrap: break-word;
+    transition: all .2s ease-in-out;
+  }
+}
+
+@media screen and (min-width: 900px){
+  .signin-button{
+    font-size: 13px;
+
+  }
+  .signup-button{
+    font-size: 13px;
+  }
+
+}
+@media screen and (min-width: 1300px){
+  .signin-button{
+    font-size: 15px;
+
+  }
+  .signup-button{
+    font-size: 15px;
+  }
+
+}
+
+
+ /* GENERAL CSS  */
+.signin-button:hover {
+  background-color: #61892F;
+  color: #222629;
+}
+.signup-button:hover {
+  background-color: #61892F;
+  color: #222629;
+}
