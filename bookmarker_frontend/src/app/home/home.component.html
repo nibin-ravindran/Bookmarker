@@ -12,33 +12,61 @@
 <body>
     <div class="container-fluid">
         <img src="assets/home.png" alt="" class="image-home">
-        <button *ngIf="!register && !login" class="btn btn-primary signup-button" (click)="register=!register">Register
+        <button *ngIf="!register && !login" class="btn btn-primary signup-button" (click)="open(content)">Register
             for free <span></span><span></span><span></span><span></span> </button>
         <button *ngIf="!register && !login" class="btn btn-primary signin-button" (click)="register=!register">Sign
             in</button>
 
-    </div>
-    <!-- Register form -->
-    <div *ngIf="register">
-        <form class="form" [formGroup]="registerForm">
-            <div class="formControl">
-                <label for="name">Name :</label>
-                <input type="text" formControlName="name">
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">New user registration</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="registerForm" class="form">
+            <div>
+              <label for="name">Name :
+                <input type="text" class="form-control" formControlName="name">
+              </label>
             </div>
-            <div class="formControl">
-                <label for="username">Username :</label>
-                <input type="text" formControlName="username">
+            <div>
+              <label for="email">Email :
+                <input type="text" class="form-control" formControlName="email">
+              </label>
+              <div class="text text-danger form-alert" *ngIf="registerForm.get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                Please provide a valid email address.
+              </div>
             </div>
-            <div class="formControl">
-                <label for="password">Password :</label>
-                <input type="password" formControlName="password">
+            <div>
+              <label for="password">Password :
+                <input type="password" class="form-control" formControlName="password">
+              </label>
+              <div class="text text-danger form-alert" *ngIf="registerForm.get('password').invalid && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                Please provide a valid password. Password should contain -
+                <br> 1) At least 8 characters
+                <br> 2) At least 1 alphabet, 1 number and 1 special character
+                <br>    ( !, @, #, $, %, &, * )
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-            <button type="reset" class="btn btn-danger" (click)="register=!register">Cancel</button>
-            Value : {{registerForm.value | json}}
+<!--            <button type="submit" class="btn btn-primary">Register</button>-->
+<!--            <button type="reset" class="btn btn-danger" (click)="register=!register">Cancel</button>-->
+<!--            Value : {{registerForm.value | json}}-->
 
-        </form>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Register</button>
+          <button type="reset" class="btn btn-outline-dark" (click)="modal.close('Cancel click')">Cancel</button>
+<!--          Value : {{registerForm.value | json}}-->
+        </div>
+      </ng-template>
+
+      <pre>{{ closeResult }}</pre>
+
     </div>
+
 </body>
 
 </html>
