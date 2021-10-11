@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   register : boolean = false;
   login : boolean = false;
   closeResult : string;
+  check : string;
 
   constructor(
     private fb : FormBuilder,
@@ -24,16 +25,22 @@ export class HomeComponent implements OnInit {
     this.registerForm = this.fb.group({
       name : ['',[Validators.required]],
       email : ['',[Validators.email]],
-      password : ['',[Validators.required]]
+      password : ['',[Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$/)]]
     })
   }
 
   open(content) {
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
+        this.saveUser();
       }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        this.closeResult = `Dismissed`;
       });
     }
+
+  saveUser () {
+
+
+  }
 
 }
