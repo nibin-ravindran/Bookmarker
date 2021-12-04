@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService} from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +17,13 @@ export class HomeComponent implements OnInit {
   login : boolean = false;
   closeResult : string;
   check : string;
+  userAdded : boolean = false;
+  user : User = new User();
 
   constructor(
     private fb : FormBuilder,
-    private modalService : NgbModal
+    private modalService : NgbModal,
+    private userService : UserService
   ) { }
 
   ngOnInit(): void {
@@ -39,8 +44,13 @@ export class HomeComponent implements OnInit {
     }
 
   saveUser () {
-
-
+    this.user.email = this.registerForm.get('email').value;
+    this.user.name = this.registerForm.get('name').value;
+    this.user.password = this.registerForm.get('password').value;
+    this.userService.addUser(this.user).subscribe( data=>{
+      this.userAdded = true;
+      },
+      error => console.log(error));
   }
 
 }
