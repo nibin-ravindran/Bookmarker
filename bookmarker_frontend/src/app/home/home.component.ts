@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   loginForm : FormGroup;
   register : boolean = false;
   login : boolean = false;
+  loggedIn : boolean = false;
   closeResult : string;
   check : string;
   userAdded : boolean = false;
@@ -32,9 +33,13 @@ export class HomeComponent implements OnInit {
       email : ['',[Validators.email]],
       password : ['',[Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$/)]]
     })
+    this.loginForm = this.fb.group({
+      email : ['',[Validators.required]],
+      password : ['',[Validators.required]]
+    })
   }
 
-  open(content) {
+  openRegister(content) {
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
         this.saveUser();
@@ -42,6 +47,15 @@ export class HomeComponent implements OnInit {
         this.closeResult = `Dismissed`;
       });
     }
+
+  openLogin(loginContent) {
+        this.modalService.open(loginContent, {ariaLabelledBy: 'modal-basic-title-login'}).result.then((result) => {
+          this.closeResult = `Closed with: ${result}`;
+          this.userLogIn();
+        }, (reason) => {
+          this.closeResult = `Dismissed`;
+        });
+      }
 
   saveUser () {
     this.user.email = this.registerForm.get('email').value;
@@ -51,6 +65,10 @@ export class HomeComponent implements OnInit {
       this.userAdded = true;
       },
       error => console.log(error));
+  }
+
+  userLogIn() {
+
   }
 
 }
