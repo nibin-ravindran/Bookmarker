@@ -15,7 +15,9 @@ public class BookmarkerController {
     private UserRepository userRepository;
 
     @CrossOrigin
-    @PostMapping("/addUser")
+    @PostMapping("/register")
     public User addUser (@RequestBody User user) { return userRepository.save(user); }
+
+
 
 }
