@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   loggedIn : boolean = false;
   closeResult : string;
   check : string;
+  errorMessage : string;
   userAdded : boolean = false;
   user : User = new User();
 
@@ -62,13 +63,20 @@ export class HomeComponent implements OnInit {
     this.user.name = this.registerForm.get('name').value;
     this.user.password = this.registerForm.get('password').value;
     this.userService.addUser(this.user).subscribe( data=>{
+      this.errorMessage = null;
       this.userAdded = true;
       },
       error => console.log(error));
   }
 
-  userLogIn() {
-
-  }
-
+  userLogIn () {
+    this.user.email = this.loginForm.get('email').value;
+    this.user.password = this.loginForm.get('password').value;
+    this.userService.userLogin(this.user).subscribe ( data=>{
+      this.errorMessage = null;
+      this.loggedIn = true;
+    },
+    error => this.errorMessage = error.errorMessage
+    );
+   }
 }
