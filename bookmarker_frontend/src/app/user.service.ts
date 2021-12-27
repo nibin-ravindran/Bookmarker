@@ -15,4 +15,8 @@ export class UserService {
     addUser(user : User): Observable<Object>{
         return this.http.post(`${this.baseURL}/addUser`, user);
       }
+
+    userLogin(user : User): Observable<Object>{
+      return this.http.post(`${this.baseURL}/userLogin`, user);
+    }
 }
